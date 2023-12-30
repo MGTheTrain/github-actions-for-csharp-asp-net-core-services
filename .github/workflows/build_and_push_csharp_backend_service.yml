@@ -17,5 +17,5 @@ jobs:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }} 
           ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
           ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
-          SRC_WORKING_DIRECTORY: ./src
+          SRC_WORKING_DIRECTORY: ./src/HelloWorldService
           TEST_WORKING_DIRECTORY: ./test
