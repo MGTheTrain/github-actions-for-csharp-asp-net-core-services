@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: CI/CT Action for C# Backend Services
-        uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-csharp-asp-net-core-services@main
+        uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-csharp-backend-services@main
         with:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
