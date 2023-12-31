@@ -1,0 +1,49 @@
+name: CI/CT workflow for C# ASP .NET Core service docker image
+
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  set_stage:
+    name: Determine Stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Set revision_number by branch and semantic_version
+        id: branch_check
+        run: |
+          echo "Running on branch ${{ github.base_ref }}"
+          if [ "${{ github.base_ref }}" == "master" ]; then
+            echo "revision_number=prerelease${{ github.run_number }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.base_ref }}" == "develop" ]; then
+            echo "revision_number=dev${{ github.run_number }}" >> $GITHUB_OUTPUT
+          fi
+          semantic_version=$(cat version)
+          echo "semantic_version=$semantic_version" >> $GITHUB_OUTPUT
+      - name: Print Revision number
+        run: echo "revision_number for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.revision_number }}'"
+      - name: Print Semantic version
+        run: echo "semantic_version for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
+    outputs:
+      revision_number: ${{ steps.branch_check.outputs.revision_number }}
+      semantic_version: ${{ steps.branch_check.outputs.semantic_version }}
+  ci-ct-job-for-csharp-asp-net-core-services:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: CI/CT Action for C# Backend Services
+        uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-csharp-backend-services@main
+        with:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
+          ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }} 
+          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+          SRC_WORKING_DIRECTORY: ./src/HelloWorldService
+          TEST_WORKING_DIRECTORY: ./test
+          DOCKER_IMAGE_NAME: csharp-hello-world-service:${{ needs.set_stage.outputs.semantic_version }}-${{ needs.set_stage.outputs.revision_number }}
