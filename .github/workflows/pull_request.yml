@@ -47,3 +47,4 @@ jobs:
           SRC_WORKING_DIRECTORY: ./src/HelloWorldService
           TEST_WORKING_DIRECTORY: ./test
           DOCKER_IMAGE_NAME: csharp-hello-world-service:${{ needs.set_stage.outputs.semantic_version }}-${{ needs.set_stage.outputs.revision_number }}
+          
