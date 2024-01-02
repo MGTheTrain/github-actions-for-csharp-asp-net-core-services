@@ -1,0 +1,17 @@
+name: Linting and auto-formatting C# files
+
+on:
+  push:
+
+jobs:
+  set_stage:
+    name: Determine Stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Linting and auto-formatting C# files
+        uses: MGTheTrain/github-actions/.github/actions/auto-formatting-for-csharp@main
+        with:
+          WORKING_DIRECTORY: ./
+          GH_TOKEN: ${{ inputs.GH_TOKEN }}
