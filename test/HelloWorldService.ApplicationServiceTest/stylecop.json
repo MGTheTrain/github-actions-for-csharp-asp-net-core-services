@@ -1,20 +1,3 @@
 {
-    "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
-    "settings": {
-      "namingRules": {
-        "capitalization": [
-          {
-            "allowedPrefixes": [ "I" ],
-            "requirePrefix": true,
-            "capType": "PascalCase"
-          },
-          {
-            "allowedPrefixes": [ "_" ],
-            "requirePrefix": false,
-            "capType": "camelCase"
-          }
-        ]
-      }
-    }
-  }
-  
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+}
