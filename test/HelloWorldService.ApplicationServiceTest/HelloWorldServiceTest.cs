@@ -1,9 +1,13 @@
-using Xunit;
-using Moq;
-using Microsoft.Extensions.Logging;
+// <copyright file="HelloWorldServiceTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HelloWorldService.ApplicationServiceTest
 {
+    using Microsoft.Extensions.Logging;
+    using Moq;
+    using Xunit;
+
     public class HelloWorldServiceTests
     {
         [Fact]
