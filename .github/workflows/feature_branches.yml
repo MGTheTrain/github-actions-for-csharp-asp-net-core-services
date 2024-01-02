@@ -13,5 +13,6 @@ jobs:
       - name: Linting and auto-formatting C# files
         uses: MGTheTrain/github-actions/.github/actions/auto-formatting-for-csharp@main
         with:
-          WORKING_DIRECTORY: ./
+          SRC_WORKING_DIRECTORY: ./src/HelloWorldService
+          TEST_WORKING_DIRECTORY: ./test
           GH_TOKEN: ${{ inputs.GH_TOKEN }}
