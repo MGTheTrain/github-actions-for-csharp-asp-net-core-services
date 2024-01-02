@@ -11,12 +11,12 @@ namespace HelloWorldService.Web.Controllers;
 [Route("api/v1/hws")]
 public class HelloWorldController : ControllerBase
 {
-    private readonly ILogger<HelloWorldController> _logger;
+    private readonly ILogger<HelloWorldController> logger;
     private readonly IHelloWorldService helloWorldService;
 
     public HelloWorldController(ILogger<HelloWorldController> logger, IHelloWorldService helloWorldService)
     {
-        this._logger = logger;
+        this.logger = logger;
         this.helloWorldService = helloWorldService;
     }
 

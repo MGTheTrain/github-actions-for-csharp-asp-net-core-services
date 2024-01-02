@@ -9,11 +9,11 @@ namespace HelloWorldService.Application.Services
 
     public class HelloWorldService : IHelloWorldService
     {
-        private readonly ILogger<HelloWorldService> _logger;
+        private readonly ILogger<HelloWorldService> logger;
 
         public HelloWorldService(ILogger<HelloWorldService> logger)
         {
-            this._logger = logger;
+            this.logger = logger;
         }
 
         public string GetHelloWorldMessage()
