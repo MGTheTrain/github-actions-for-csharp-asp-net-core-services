@@ -1,15 +1,19 @@
-using Microsoft.Extensions.Logging;
-using HelloWorldService.Domain.Interfaces;
+// <copyright file="HelloWorlService.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace HelloWorldService.Application.Services
 {
-    public class HelloWorldService: IHelloWorldService
+    using HelloWorldService.Domain.Interfaces;
+    using Microsoft.Extensions.Logging;
+
+    public class HelloWorldService : IHelloWorldService
     {
-        private readonly ILogger<HelloWorldService> _logger;
+        private readonly ILogger<HelloWorldService> logger;
 
         public HelloWorldService(ILogger<HelloWorldService> logger)
         {
-            _logger = logger;
+            this.logger = logger;
         }
 
         public string GetHelloWorldMessage()
