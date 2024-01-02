@@ -25,7 +25,7 @@ public class HelloWorldController : ControllerBase
     /// </summary>
     /// <response code="200">If operation succeeded.</response>
     /// <return>Returns awaitable task.</return>
-    /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
     [HttpGet]
     [Produces("application/json")]
     public async Task<IActionResult> GetUploadBlobsMetainformation()
